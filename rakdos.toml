@@ -1,0 +1,9 @@
+daemon_process="tail -f /dev/null"
+setup_steps = [
+	{ run = "echo setup" },
+	{ run = "echo daemon && tail -f /dev/null && echo never", daemon = true},
+	{ run = "echo more setup"}
+]
+takedown_steps = [
+	"echo takedown"
+]
