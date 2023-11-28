@@ -38,7 +38,12 @@ struct Cli {
 
 macro_rules! get_command {
 	($command: expr) => {
-		Command::new("/bin/sh").arg("-c").arg($command)
+		Command::new(match env::var_os("RAKDOS_SHELL") {
+			Some(v) => v.into_string().unwrap(),
+			None => "/bin/sh".to_string(),
+		})
+		.arg("-c")
+		.arg($command)
 	};
 }
 
