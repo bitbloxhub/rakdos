@@ -23,7 +23,7 @@ jobs:
 
         - name: Release
           run: cargo build --release --verbose
-        - uses: actions/upload-artifact
+        - uses: actions/upload-artifact@v3
           with:
             name: rakdos
             path: target/release/rakdos
